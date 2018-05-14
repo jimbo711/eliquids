@@ -1,12 +1,9 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>New Order</title>
-    <link rel="stylesheet" type="text/css" href="styles/reset.css">
-    <link rel="stylesheet" type="text/css" href="styles/style.css">
-</head>
-<body>
+<?php
+// Assign page title
+$page_title = "Login";
+// Page header
+require_once 'inc/header.php';
+?>
 
 <div id="login">
     <form action="inc/verifylogin.php" method="POST">
@@ -27,8 +24,8 @@
     </table>
 </div><!-- /#login -->
 
-</body>
-</html>
-<?php
 
+<?php 
+// Page footer 
+include_once 'inc/footer.php' 
 ?>

@@ -1,17 +1,16 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Error</title>
-    <link rel="stylesheet" type="text/css" href="../styles/reset.css">
-    <link rel="stylesheet" type="text/css" href="../styles/style.css">
-</head>
-<body>
+<?php 
+// Connect to DB
+require_once 'connect.php'; 
+// Set page title
+$page_title = "Woops...";
+// Set style path
+$style_path = "../";
+// Page header
+require_once 'header.php';
+?>
 <div id="main-wrapper" class="error">
 <h2>Woops...</h2>
 <?php
-
-include 'connect.php';
 
 // Store form inputs in vars
 $newLiquidName = $_GET['name'];
@@ -61,5 +60,7 @@ if ($errors == "") {
 }
 ?>
 </div><!-- /#main-wrapper -->
-</body>
-</html>
+<?php
+// Page footer
+include_once 'footer.php';
+?>

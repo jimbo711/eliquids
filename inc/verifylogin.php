@@ -35,10 +35,15 @@ while ($row=mysqli_fetch_array($result)) {
     }
 }
 
-// Once approved, take user to homepage
+// Once approved, create a cookie and go to home
 if ($approved) {
-    // Also create a login cookie
-    setcookie("login", true, time() + (86400), "/"); // 86400 = 1 day
+    // For 1 day if it's Jim.
+    if ($username == "the.jim.farrugia@gmail.com") {
+        setcookie("login", true, time() + (86400), "/"); // 86400 secs = 1 day
+    } else {
+    // Else for 20min.
+        setcookie("login", true, time() + (60 * 20), "/");
+    }
     header('Location: ../index.php');
 } else {
     // Otherwise, back to the login page.

@@ -3,26 +3,21 @@
 if (!isset($_COOKIE['login'])) {
     header('Location: login.php');
 }
+// Connect to DB
+require_once 'inc/connect.php';
+// PHP functions
+require_once 'inc/functions.php';
+// Page header
+require_once 'inc/header.php';
 ?>
-
-<?php include_once 'inc/connect.php'; ?>
  
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>eLiquid</title>
-    <link rel="stylesheet" type="text/css" href="styles/reset.css">
-    <link rel="stylesheet" type="text/css" href="styles/style.css">
-</head>
-<body>
     
 <div id="main-wrapper">
 <div class="clearfix stretch">
 
     <div id="results" class="wrapper">
         <h2>Current Stock</h2>
-        <?php include 'inc/currentstock.php'; ?>
+        <?php current_stock($conn); ?>
     </div><!-- /#results -->
 
     <div class="wrapper">
@@ -54,7 +49,7 @@ if (!isset($_COOKIE['login'])) {
             <h3>Update Row</h3>
             <form action="inc/editrow.php" method="GET">
             <p>
-                <?php include 'inc/flavourfield.php' ?>
+                <?php flavourfield("name", $conn); ?>
                 <input type="text" size="5" name="newQty" placeholder="New Qty">
                 <button type="submit">Update</button>
             </p>
@@ -130,9 +125,7 @@ if (!isset($_COOKIE['login'])) {
             <th>Selection</th>
             <th>Done</th>
         </tr>
-        <?php
-            include 'inc/unfulfilledorders.php';
-        ?>
+        <?php unfulfilled_orders($conn); ?>
         <tr>
             <td></td>
             <td></td>
@@ -157,15 +150,10 @@ if (!isset($_COOKIE['login'])) {
             <th>Selection</th>
             <th>Dispatched</th>
         </tr>
-        <?php
-            include 'inc/fulfilledorders.php';
-        ?>
+        <?php fulfilled_orders($conn); ?>
     </table>
 </div>
 
 </div><!-- /#wrapper -->
 
-
-
-</body>
-</html>
+<?php include_once 'inc/footer.php'; ?>
